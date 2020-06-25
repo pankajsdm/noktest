@@ -1,0 +1,60 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title text-center>{{titleLabel}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<div id="container">
+  <ion-img src="assets/images/nok-banner.png"></ion-img>
+</div>
+
+<ion-content full>
+  
+  <ion-grid>
+    <ion-row justify-content-center>
+      <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+        <form [formGroup]="loginFormGroup" (ngSubmit)="login()">
+          <div class="input-container" *ngIf="isloginActive">
+            <ion-item>
+              <ion-input type="text" formControlName="username" placeholder="Username"></ion-input>
+            </ion-item>
+
+            <ion-item>  
+              <ion-input type="password" formControlName="password" placeholder="Password"></ion-input>
+            </ion-item>
+
+            <div class="action">
+              <a (click)="action('sign-up')">Sign Up </a>
+              <a (click)="action('forget-password')" item-end> Forget Password</a>
+            </div>
+            <ion-button [disabled]="loginFormGroup.invalid" type="submit" full size="Medium" expand="block">Login</ion-button>
+          </div>
+
+          <app-loader *ngIf="isLoading" number="0"></app-loader>
+
+          <div class="input-container" *ngIf="!isloginActive">
+            <ion-item>
+              <ion-input type="text" placeholder="Email"></ion-input>
+            </ion-item>
+            <div class="action">
+              <a (click)="action('login')" item-end>Login</a>
+              <a (click)="action('sign-up')">Sign Up</a>
+            </div>
+            <ion-button type="submit" full size="Medium" expand="block">Forget Password</ion-button>
+          </div>
+        </form>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+
+  <!-- <div id="container-or"  *ngIf="isloginActive">
+    <p>OR</p>
+  </div>
+
+  <div id="container-social"  *ngIf="isloginActive">
+    <ion-img src="assets/images/facebook-login.png"></ion-img>
+    <ion-img src="assets/images/google-login.png"></ion-img>
+  </div> -->
+
+</ion-content>
