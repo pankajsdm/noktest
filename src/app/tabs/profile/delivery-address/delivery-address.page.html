@@ -1,0 +1,87 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Add Delivery Address</ion-title>
+    <ion-buttons class="left" slot="start">
+      <ion-back-button text="Back" icon=""></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <form [formGroup]="addDeliveryAddressForm" (ngSubmit)="submitDeliveryAddress()">
+    <ion-list lines="full" class="ion-no-margin ion-no-padding">
+
+        <ion-item>
+          <ion-row>
+            <ion-col size="6">
+              <ion-label position="stacked">First Name<ion-text color="danger">*</ion-text></ion-label>
+              <ion-input type="text" formControlName="first_name" placeholder="Enter first name"></ion-input>
+            </ion-col>
+            <ion-col size="6">
+              <ion-label position="stacked">Last Name<ion-text color="danger">*</ion-text></ion-label>
+              <ion-input type="text" formControlName="last_name" placeholder="Enter last name"></ion-input>
+            </ion-col>
+          </ion-row>
+        </ion-item>
+
+        <ion-item>
+          <ion-row>
+            <ion-col size="6">
+              <ion-label position="stacked">Country<ion-text color="danger">*</ion-text></ion-label>
+             <!--  <ion-input type="text" formControlName="country" placeholder="Choose country"></ion-input> -->
+
+             <ion-select  formControlName="country"  placeholder="Select Country">
+              <ion-select-option [value]="item.name" *ngFor="let item of countries" >{{item.name}}</ion-select-option>
+            </ion-select>
+
+            </ion-col>
+            <ion-col size="6">
+              <ion-label position="stacked">State<ion-text color="danger">*</ion-text></ion-label>
+              <ion-input type="text" formControlName="state" placeholder="Enter state name"></ion-input>
+            </ion-col>
+          </ion-row>
+        </ion-item>
+
+
+        <ion-item>
+          <ion-row>
+            <ion-col size="6">
+              <ion-label position="stacked">City<ion-text color="danger">*</ion-text></ion-label>
+              <ion-input type="text" formControlName="city" placeholder="Enter city name"></ion-input>
+            </ion-col>
+            <ion-col size="6">
+              <ion-label position="stacked">Pine<ion-text color="danger">*</ion-text></ion-label>
+              <ion-input type="text" formControlName="pin" placeholder="Enter pincode"></ion-input>
+            </ion-col>
+          </ion-row>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Phone Number<ion-text color="danger">*</ion-text></ion-label>
+          <ion-input type="text" formControlName="phone" placeholder="Enter phone number"></ion-input>
+        </ion-item>
+
+        
+        <ion-item>
+          <ion-label position="stacked">Street Address<ion-text color="danger">*</ion-text></ion-label>
+          <ion-input type="text" formControlName="address" placeholder="Enter street address"></ion-input>
+        </ion-item>
+
+        
+        <ion-row class="marginFormSubmit"> 
+          <ion-col size="2"></ion-col>
+          <ion-col size="8">
+            <ion-button [disabled]="addDeliveryAddressForm.invalid" type="submit" full size="Medium" expand="block">Update Delivery Address</ion-button>
+          </ion-col>
+          <ion-col size="2"></ion-col>
+        </ion-row>
+       <app-loader *ngIf="isLoading"  number="0" [message]="message"></app-loader>
+
+      </ion-list>
+  </form>
+    
+
+  </ion-content>
+
+

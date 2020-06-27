@@ -1,0 +1,80 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Cart</ion-title>
+    <ion-buttons class="left" slot="start" (click)="goToFeed()">
+      Feed
+    </ion-buttons>
+    <ion-buttons class="right" slot="end" (click)="continueForPayment()">
+      Continue
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)" color="primary">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <ion-card>
+    <ion-list>
+      <ion-list-header class="cart-title-header">
+        Below is the cart item
+      </ion-list-header>
+    </ion-list>
+  </ion-card>
+
+  <ion-card  class="welcome-card">
+    <ion-grid class="title-grid">
+      <ion-row>
+        <ion-col size="4">
+          <h5>Item Name  </h5>
+        </ion-col>
+        <ion-col size="6">
+        </ion-col>
+        <ion-col>
+          <h5>Price</h5>
+        </ion-col>
+        </ion-row>
+    </ion-grid> 
+    <ion-grid *ngFor="let cartItem of cartArr" >
+      <ion-row>
+        <ion-col size="2">
+          <img *ngIf="cartItem.files && cartItem.fileType=='image'" width="50" [src]="cartItem.files">
+
+          <video *ngIf="cartItem.files && cartItem.fileType=='video'" controls="controls" preload="metadata"  webkit-playsinline="webkit-playsinline" class="videoPlayer">
+            <source [src]="cartItem.files" type="video/mp4"/>
+          </video>
+
+        </ion-col>
+        <ion-col size="8">
+          <h6>{{cartItem.title}}</h6>
+        </ion-col>
+        <ion-col>
+          <h6>${{cartItem.price}}</h6>
+        </ion-col>
+        </ion-row>
+    </ion-grid>
+
+    <ion-grid class="title-price">
+      <ion-row>
+        <ion-col size="4">
+          <h5>Total</h5>
+        </ion-col>
+        <ion-col size="6">
+        </ion-col>
+        <ion-col>
+          <h5>${{total}}</h5>
+        </ion-col>
+        </ion-row>
+    </ion-grid> 
+
+  </ion-card>
+
+  <div class="ion-padding">
+    <ion-button expand="block"  class="ion-no-margin" (click)="continueForPayment()">Continue</ion-button>
+  </div>
+
+  </ion-content>
+

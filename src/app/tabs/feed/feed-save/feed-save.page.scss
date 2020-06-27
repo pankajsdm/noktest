@@ -1,0 +1,36 @@
+
+.category{
+    float: left;
+    width: 35%;
+    label{color: #9a9696;}
+    ion-select{    
+        padding: 8px 0px;
+        width: 140px;
+    }
+}
+
+.file-chooser{
+    width: 100%;
+    .choose-file-input{
+        height: 0px;width:0px; overflow:hidden;
+    }
+    .input-container{
+        float: left;
+        width: 100%;
+        padding: 0px 0 13px 0px;
+        .selector{
+            text-align: center;
+            border: 1px dashed #BBB;
+            cursor: pointer;
+            margin-top: 12px;
+            padding: 5px;
+            width: 40%;
+            margin-left: 15px;
+            float: left;
+        }
+       
+    }
+}
+.video-image{
+    width: 100%;
+}

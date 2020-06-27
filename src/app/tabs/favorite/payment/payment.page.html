@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Payment</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+
+    <ion-img src="assets/images/dummy-credit-card.png"></ion-img>
+    
+    <ion-header class="ion-no-border">
+      <ion-toolbar>
+        <ion-title>Payment Information</ion-title>
+      </ion-toolbar>
+    </ion-header>
+
+    <form onsubmit="processForm(event)">
+      <ion-list lines="full" class="ion-no-margin ion-no-padding">
+        <ion-item>
+          <ion-label position="stacked">Owner Name<ion-text color="danger">*</ion-text></ion-label>
+          <ion-input required type="text" placeholder="Enter card owner name"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Card Number<ion-text color="danger">*</ion-text></ion-label>
+          <ion-input required type="text" placeholder="Enter card number"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-row>
+            <ion-col size="6">
+              <ion-label position="stacked">Expiry Date<ion-text color="danger">*</ion-text></ion-label>
+              <ion-input required type="text" placeholder="Enter card number"></ion-input>
+            </ion-col>
+            <ion-col size="6">
+              <ion-label position="stacked">CVV<ion-text color="danger">*</ion-text></ion-label>
+              <ion-input required type="text" placeholder="Enter card number"></ion-input>
+            </ion-col>
+          </ion-row>
+        </ion-item>
+
+      </ion-list>
+
+      <div class="ion-padding">
+        <ion-button expand="block" type="submit" class="ion-no-margin">Create account</ion-button>
+      </div>
+    </form>
+  </ion-content>
+

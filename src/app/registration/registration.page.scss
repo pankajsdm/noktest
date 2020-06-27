@@ -1,0 +1,34 @@
+ion-header {text-align: center;}
+ion-content {
+	ion-grid{
+		width: 100% !important;
+		height: 100% !important;
+		background: url('./../../assets/images/bg.jpg');
+	
+		ion-row {
+			height: 100%;
+			ion-col {
+				background: transparent;
+				.input-container{
+					margin-top:5px;
+					ion-item{padding: 3px 0 3px 0;}
+					.action{
+						padding: 12px;
+						a{
+							margin-right: 4px;
+							font-size: 17px;
+						}
+					}
+					ion-button {
+						font-weight: 300;
+					}
+				}
+			}
+		}
+	}
+}
+
+
+
+
+

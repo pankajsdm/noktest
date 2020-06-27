@@ -1,0 +1,29 @@
+ion-header{
+    border-bottom: 1px solid #ccc;
+    .continue{
+        color: #4c8dff;
+        font-weight: bold;
+        ion-icon{
+            font-size: 25px;
+        }
+    }
+}
+
+
+.welcome-card{
+    h3 {
+        float: left;
+        width: 50%;
+        padding: 5px;
+    }
+    .title-favourite{
+        span.active {
+            float: right;
+            padding: 15px 10px 0px 0px;
+            font-size: 23px;
+            color: #4c8dff;
+        }
+       
+    }
+}
+ 

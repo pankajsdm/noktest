@@ -1,0 +1,74 @@
+<ion-header translucent>
+  <ion-toolbar>
+    <ion-title>User Profile</ion-title>
+    <ion-buttons slot="start" (click)="backToExplore()">
+      <ion-icon name="arrow-back"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content padding>
+
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)" color="primary">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  
+  <app-loader *ngIf="isLoading" number="7"></app-loader>
+   
+  <div class="user-profile-container" *ngIf="user">
+
+    <div class="view-profile">
+      <div class="picture-block">
+        <div class="user-name"><h2 *ngIf="user.first_name">{{user.first_name}} {{user.last_name}}</h2></div>
+        <div class="user-img"> 
+          <img [src]="selectedFile">
+        </div>
+        <div class="home-town">General Information</div>
+      </div>  
+
+
+      <ion-item *ngIf="user.email">
+        <ion-label>
+          <div><span>Email </span> <h2>{{user.email}}</h2></div>
+        </ion-label>
+      </ion-item>
+      <ion-item *ngIf="user.artist_seller">
+        <ion-label>
+          <div><span>Artist/Seller </span> <h2>{{user.artist_seller}}</h2></div>
+        </ion-label>
+      </ion-item>
+      <ion-item *ngIf="user.country">
+        <ion-label>
+          <div><span>Country </span> <h2>{{user.country}}</h2></div>
+        </ion-label>
+      </ion-item>
+
+      <div class="picture-block">
+        <div class="home-town">Uploaded Interaction</div>
+      </div>
+
+    </div>
+
+    <ion-grid class="art-container">
+      <ion-row>
+        <ion-col size="6">
+          <img src="assets/images/art/dummy-art1.jpg">
+        </ion-col>
+        <ion-col size="6">
+          <img src="assets/images/art/dummy-art2.jpg">
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="6">
+          <img src="assets/images/art/dummy-art3.jpg">
+        </ion-col>
+        <ion-col size="6">
+          <img src="assets/images/art/dummy-art4.jpg">
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+
+  </div>
+ </ion-content>
+ 
+ 

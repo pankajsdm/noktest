@@ -1,0 +1,81 @@
+<ion-header translucent>
+  <ion-toolbar>
+    <ion-title>Create Feed</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button text="Back" icon=""></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <form [formGroup]="uploadFeedForm" (ngSubmit)="uploadFeed()">
+    <ion-list lines="full" class="ion-no-margin ion-no-padding">
+
+      <ion-item>
+        <!-- <ion-row class="file-chooser">
+          <div class="input-container">
+            <div class="selector" (click)="openFileChoose()">Choose File</div>
+          </div>
+          <div class="choose-file-input">
+            <input id="upfile" type="file" value="upload" (change)="callFile($event)"/>
+          </div>
+        </ion-row> -->
+        <button ion-button color="secondary" (click)="chooserMedia()">Choose Photo</button>
+      </ion-item>
+
+      <div class="video-image" *ngIf="isSelected">
+        <!-- <img [src]="selectedFile" id="image"> -->
+       <!--  <video  *ngIf="fileType=='video'" controls="controls" preload="metadata" autoplay="autoplay" webkit-playsinline="webkit-playsinline" class="videoPlayer">
+          <source [src]="selectedFile" type="video/mp4" />
+         </video> -->
+      </div>
+
+        <ion-item>
+          <ion-label position="stacked">Feed Title<ion-text color="danger">*</ion-text></ion-label>
+          <ion-input type="text" formControlName="title" placeholder="Feed title"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Description<ion-text color="danger">*</ion-text></ion-label>
+          <ion-input type="textarea" formControlName="description" placeholder="Feed description"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Price<ion-text color="danger">*</ion-text></ion-label>
+          <ion-input type="number" formControlName="price" placeholder="Enter price"></ion-input>
+        </ion-item>
+
+        <!-- <ion-item>
+          <ion-label position="stacked">Analytics<ion-text color="danger">*</ion-text></ion-label>
+          <ion-input type="text" formControlName="analytics" placeholder="Analytics"></ion-input>
+        </ion-item> -->
+
+        
+
+        <ion-item>
+          <ion-label position="stacked">Choose Category<ion-text color="danger">*</ion-text></ion-label>
+         
+          <ion-select multiple="true"   class="category" formControlName="category"  placeholder="Select category">
+          <ion-select-option *ngFor="let data of getCat" value="{{data.term_id}}">
+            {{data.name}}
+          </ion-select-option>
+          </ion-select> 
+        </ion-item>
+        
+        <!-- <ion-searchbar  [(ngModel)]="searchInput" (ionInput)="updateSearchResults($event)" placeholder="Search for a place" [ngModelOptions]="{standalone: true}"></ion-searchbar>
+        <ion-list [hidden]="autocompleteItems.length == 0" *ngIf="isSearchListing" >
+          <ion-item *ngFor="let item of autocompleteItems" tappable (click)="selectSearchResult(item)">
+            {{ item.description }}
+          </ion-item>
+        </ion-list> -->
+
+        
+        <ion-button *ngIf="isSubmitShow" [disabled]="uploadFeedForm.invalid" type="submit" full size="Medium" expand="block">Upload</ion-button>
+        <app-loader *ngIf="isLoading"  number="0" message="Creating new feed..."></app-loader>
+
+      </ion-list>
+  </form>
+    
+
+  </ion-content>
+

@@ -1,0 +1,28 @@
+.welcome-card{
+    h3 {
+        float: left;
+        width: 50%;
+        padding: 5px;
+    }
+    .title-favourite{
+        span.active {
+            float: right;
+            padding: 15px 10px 0px 0px;
+            font-size: 33px;
+            color: #4c8dff;
+        }
+        span.inactive {
+            float: right;
+            padding: 15px 10px 0px 0px;
+            font-size: 33px;
+            color: #c4c7cc;
+        }
+    }
+}
+
+ion-item {
+    div {
+      span{float: left;}
+      h2{margin-left: 14px;float: left;font-weight: bold;}
+    }
+  }

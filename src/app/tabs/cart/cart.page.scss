@@ -1,0 +1,36 @@
+ion-header{
+    border-bottom: 1px solid #ccc;
+
+}
+ion-content{
+    ion-list{
+        .cart-title-header{
+            padding-left: 18px;
+            padding-bottom: 18px;
+            font-size: 16px;
+            padding-top: 0px;
+        }
+    }
+    form{ margin-top: 10px; }
+    .title-grid{
+        background: #787676;
+        color: #f3f3f3;
+
+    }
+    .title-price{
+        //border-top:1px solid #ccc;
+        color: #000;
+    }
+    ion-grid{
+        border-top:1px solid #ccc;
+        img{
+            width: 52px;
+            height: 50px;
+        }
+        video{
+            width: 52px;
+            height: 50px;
+        }
+        h5{font-weight: bold;}
+    }
+}

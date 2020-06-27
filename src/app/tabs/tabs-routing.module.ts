@@ -1,54 +1,68 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { TabsPage } from './tabs.page';
+import { AuthGuard } from '../guards/auth/auth.guard';
+import { LoginGuard } from '../guards/login/login.guard';
 
 const routes: Routes = [
+  {
+    path: '',
+    redirectTo: 'login',
+    pathMatch: 'full'
+  },
+  {
+    path: "login",
+    loadChildren: () =>import('./../login/login.module').then(m => m.LoginPageModule),
+    canActivate: [LoginGuard]
+  },
   {
     path: 'tabs',
     component: TabsPage,
     children: [
       {
-        path: 'tab1',
-        children: [
-          {
-            path: '',
-            loadChildren: () =>
-              import('../tab1/tab1.module').then(m => m.Tab1PageModule)
-          }
-        ]
+        path: 'feed',
+        loadChildren: () =>
+        import('./feed/feed.module').then(m => m.FeedPageModule),
+        canActivate: [AuthGuard],
       },
       {
-        path: 'tab2',
-        children: [
-          {
-            path: '',
-            loadChildren: () =>
-              import('../tab2/tab2.module').then(m => m.Tab2PageModule)
-          }
-        ]
+        path: 'favorite',
+        loadChildren: () => import('./favorite/favorite.module').then( m => m.FavoritePageModule)
       },
       {
-        path: 'tab3',
-        children: [
-          {
-            path: '',
-            loadChildren: () =>
-              import('../tab3/tab3.module').then(m => m.Tab3PageModule)
-          }
-        ]
+        path: 'explore',
+        loadChildren: () => import('./explore/explore.module').then( m => m.ExplorePageModule),
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'profile',
+        loadChildren: () => import('./profile/profile.module').then(m => m.ProfilePageModule),
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'cart',
+        loadChildren: () => import('./cart/cart.module').then( m => m.CartPageModule)
+      },
+      {
+        path: 'user/:id',
+        loadChildren: () => import('./user/user.module').then( m => m.UserPageModule)
       },
       {
         path: '',
-        redirectTo: '/tabs/tab1',
+        redirectTo: '/tabs/feed',
         pathMatch: 'full'
       }
     ]
   },
   {
-    path: '',
-    redirectTo: '/tabs/tab1',
-    pathMatch: 'full'
-  }
+    path: 'delivery-address',
+    loadChildren: () => import('./profile/delivery-address/delivery-address.module').then( m => m.DeliveryAddressPageModule)
+  },
+ 
+
+  
+  
+  
 ];
 
 @NgModule({

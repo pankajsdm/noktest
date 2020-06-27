@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
-import { Plugins } from '@capacitor/core';
-const { SplashScreen } = Plugins;
+import { MenuController } from '@ionic/angular';
+import { Platform } from '@ionic/angular';
+import { Router } from '@angular/router';
+import { AuthService } from './services/auth.service';
+
+import { ObsService } from './services/observer/obs.service';
 
 @Component({
   selector: 'app-root',
@@ -8,17 +12,41 @@ const { SplashScreen } = Plugins;
   styleUrls: ['app.component.scss']
 })
 export class AppComponent {
-  constructor() {
+
+  userLogin: any;
+  profilePicture = './../assets/images/dummy.png';
+
+  constructor(
+    private auth: AuthService,
+    private router: Router,
+    private platform: Platform,
+    private _event: ObsService,
+
+    private menu: MenuController
+  ) {
     this.initializeApp();
+
+    this._event.get().subscribe(res => {
+      this.userLogin = this.auth.getUser();
+      if(res && res.key.type=='profile-picture-updated'){
+        this.profilePicture = res.key.profilePicture;
+      }
+    });
   }
 
   initializeApp() {
-    /* To make sure we provide the fastest app loading experience 
-       for our users, hide the splash screen automatically 
-       when the app is ready to be used:
-        
-        https://capacitor.ionicframework.com/docs/apis/splash-screen#hiding-the-splash-screen
-    */
-    SplashScreen.hide();
+    this.platform.ready().then(() => {
+
+      this.menu.enable(false, 'first');
+      this.userLogin = this.auth.getUser();
+      if(this.userLogin)
+        this.profilePicture = this.userLogin.thumbnail;
+    });
+  }
+
+  logout(){
+    localStorage.clear();
+    this.menu.enable(false);
+    this.router.navigate(['login']);
   }
 }

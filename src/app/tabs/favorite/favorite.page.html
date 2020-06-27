@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Favorite</ion-title>
+    <ion-buttons class="left" slot="start" (click)="goToFeed()">
+      Feed
+    </ion-buttons>
+    <ion-buttons class="right" slot="end" (click)="viewCart()">
+      Cart
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  
+    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)" color="primary">
+      <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+
+    <div id="no-item-found"  *ngIf="!isLoading && favoriteArr?.length==0">
+      <p>No favorite item found. It can be added by feed..</p>
+      <a full size="small" expand="block" [routerLink]="['/tabs/feed']">Go Feed</a>
+    </div>
+  
+    <app-loader *ngIf="isLoading"  number="5"></app-loader>
+
+    <ion-card class="welcome-card" *ngFor="let item of favoriteArr; let i=index">
+      <div class="title-favourite">
+        <h3 (click)="viewFeed(item.id)">{{item.title}}</h3>
+        <span  class="active">
+          <ion-icon name="trash" (click)="delete(i)"></ion-icon></span>
+      </div>
+    
+      <div class="image-video" (click)="viewFeed(item.id)">
+        <ion-img *ngIf="item.files && item.fileType=='image'"  [src]="item.files"></ion-img>
+        <video *ngIf="item.files && item.fileType=='video'" controls="controls" preload="metadata"  webkit-playsinline="webkit-playsinline" class="videoPlayer">
+          <source [src]="item.files" type="video/mp4"/>
+        </video>
+      </div>
+
+      <ion-card-content>
+        <p>{{item.description}}</p>
+      </ion-card-content>
+
+</ion-card>
+
+
+  
+</ion-content>

@@ -1,0 +1,42 @@
+.welcome-card{
+    h3 {
+        float: left;
+        width: 50%;
+        padding: 5px;
+    }
+    .title-favourite{
+
+        .cart-list{
+            ion-icon.active{font-size: 25px; color: #4c8dff;}
+            ion-icon.inactive{font-size: 25px; color: #ccc;}
+        }
+
+        span.active {
+            float: right;
+            padding: 15px 10px 0px 0px;
+            font-size: 25px;
+            color: #4c8dff;
+        }
+        span.inactive {
+            float: right;
+            padding: 15px 10px 0px 0px;
+            font-size: 33px;
+            color: #c4c7cc;
+        }
+       
+    }
+
+    ion-card-content{
+        padding: 7px;
+        span{
+            ion-icon.active{font-size: 25px; color: #4c8dff;}
+            ion-icon.inactive{font-size: 25px; color: #ccc;}
+        }
+        h5{font-size: 16px;}
+    }
+
+    ::-webkit-media-controls {
+        display:none !important;
+      }
+}
+ 

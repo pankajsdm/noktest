@@ -1,0 +1,63 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/feed"></ion-back-button>
+   </ion-buttons>
+    <ion-title>View Feed</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="feedArr">
+ 
+    <app-loader *ngIf="isLoading"  number="5"></app-loader>
+    <ion-card class="welcome-card">
+      <div class="image-video">
+        <ion-img *ngIf="feedArr.files && feedArr.fileType=='image'"  [src]="feedArr.files"></ion-img>
+        <video  *ngIf="feedArr.files && feedArr.fileType=='video'" controls="controls" preload="metadata"   class="videoPlayer">
+        <source [src]="feedArr.files" type="video/mp4"/>
+        </video>
+      </div>
+    </ion-card>
+
+    <ion-item *ngIf="feedArr.title" >
+      <ion-label>
+        <div><span>Title- </span> <h2>{{feedArr.title}}</h2></div>
+      </ion-label>
+    </ion-item>
+
+    <ion-item *ngIf="feedArr.price" >
+      <ion-label>
+        <div><span>Price- </span> <h2>${{feedArr.price}}</h2></div>
+      </ion-label>
+    </ion-item>
+
+    <ion-item *ngIf="feedArr.category" >
+      <ion-label>
+        <div><span>Category-</span> <h2 style="text-transform: capitalize;">{{category}}</h2></div>
+      </ion-label>
+    </ion-item>
+
+    <ion-item *ngIf="feedArr.analytics" >
+      <ion-label>
+        <div><span>Analytics- </span> <h2>{{feedArr.analytics}}</h2></div>
+      </ion-label>
+    </ion-item>
+
+    <!-- <ion-item *ngIf="feedArr.description" >
+      <ion-label>
+        <div><span>Description- </span> <h2>{{feedArr.description}}</h2></div>
+      </ion-label>
+    </ion-item> -->
+
+    <ion-list>
+      <ion-list-header class="cart-title-header">
+        About Art Interaction
+      </ion-list-header>
+    </ion-list>
+    <ion-item  no-lines *ngIf="feedArr.description">
+        <span style="width: 100%;">{{feedArr.description}}</span>
+    </ion-item> 
+  
+</ion-content>
+
+

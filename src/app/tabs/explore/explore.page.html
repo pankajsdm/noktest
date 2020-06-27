@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Explore</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <div id="wrapper">
+    <div id="map"></div>
+    <div id="static" (click)="showOptions()" *ngIf="!isShowOptions" >
+      <ion-icon name="options"></ion-icon>
+    </div>
+    <div id="static" *ngIf="isShowOptions">
+      <ion-grid>
+        <ion-row>
+          <ion-col size="5" class="region">
+            <ion-row>
+              <ion-col><span>Select Region</span></ion-col>
+            </ion-row>
+            <ion-row (click)="backFromOption()">
+              <ion-col><span>Close</span></ion-col>
+            </ion-row>
+          </ion-col>
+
+          <ion-col size="7">
+            <ion-row>
+              <ion-col size="5">West</ion-col>
+              <ion-col size="5">North</ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col size="5">East</ion-col>
+              <ion-col size="5">Southern</ion-col>
+            </ion-row>
+          </ion-col>
+
+
+          </ion-row>
+      </ion-grid>
+
+    </div>
+  </div>
+</ion-content>

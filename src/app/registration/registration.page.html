@@ -1,0 +1,72 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title text-center>Sign Up</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content full>
+  <ion-grid>
+    <ion-row justify-content-center>
+      <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+        <form [formGroup]="registrationFormGroup" (ngSubmit)="register()">
+          <div class="input-container">
+            
+            <ion-item>
+              <ion-input type="text" formControlName="username" placeholder="Username"></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-input type="text" formControlName="first_name" placeholder="First name"></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-input type="text" formControlName="last_name" placeholder="Last name"></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-input type="text" formControlName="email" placeholder="Email"></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-input type="password" formControlName="password" placeholder="Password"></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-input type="password" formControlName="confirm_password" placeholder="Cofirm Password"></ion-input>
+            </ion-item>
+
+           <!--  <ion-item>
+              <ion-input type="text" formControlName="artist_seller" placeholder="Artist or seller"></ion-input>
+            </ion-item> -->
+
+            <ion-item>
+              <ion-label position="stacked">Choose Category<ion-text color="danger">*</ion-text></ion-label>
+              <ion-select formControlName="artist_seller"  placeholder="Select option">
+                <ion-select-option value="artist">Artist</ion-select-option>
+                <ion-select-option value="seller">Seller</ion-select-option>
+              </ion-select> 
+            </ion-item> 
+
+            <ion-item>
+              <ion-label position="stacked">Choose Country<ion-text color="danger">*</ion-text></ion-label>
+         
+              <ion-select  formControlName="country"  placeholder="Select Country">
+                <ion-select-option [value]="item.name" *ngFor="let item of countries" >{{item.name}}</ion-select-option>
+              </ion-select> 
+            </ion-item> 
+
+
+            <div class="action">
+                <a (click)="action('login')">Login</a>
+            </div>
+      
+            <ion-button [disabled]="registrationFormGroup.invalid" type="submit" full size="Medium" expand="block">Sign Up</ion-button>
+
+            <app-loader *ngIf="isLoading" number="0" message="Registration processing..."></app-loader>
+
+          </div>
+        </form>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

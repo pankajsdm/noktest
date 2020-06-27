@@ -1,0 +1,62 @@
+<ion-header translucent>
+  <ion-toolbar>
+    <ion-title>Feed</ion-title>
+
+    <ion-buttons class="left" slot="start" (click)="viewCart()" *ngIf="isCartItem">
+      Cart
+    </ion-buttons>
+
+    <ion-buttons class="right" slot="end" (click)="addFeed()">
+      Add
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)" color="primary">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+ 
+  <app-loader *ngIf="isLoading"  number="5"></app-loader>
+  
+  <div *ngIf="!isLoading && feedArr?.length>0">
+    <ion-card class="welcome-card" *ngFor="let item of feedArr; let i=index">
+      <div class="loop-container">
+        <div class="title-favourite" >
+          <h3 (click)="viewFeed(item.id)">{{item.title}}</h3>
+          <span (click)="setCart(i, item.id)" class="cart-list active">
+            <ion-icon [ngClass]="{'active': item.isCart, 'inactive': !item.isCart}" name="cart-outline"></ion-icon>
+          </span>
+        </div>
+        <div class="image-video" (click)="viewFeed(item.id)">
+          <ion-img [src]="item.files"></ion-img>
+         <!--  <ion-img *ngIf="item.files && item.fileType=='image'"  [src]="item.files"></ion-img> -->
+          <video  *ngIf="item.files && item.fileType=='video'" controls="controls" preload="metadata"  webkit-playsinline="webkit-playsinline" class="videoPlayer" autoplay="autoplay">
+          <source [src]="item.files" type="video/mp4"/>
+          </video>
+        </div>
+
+        <ion-card-content>
+          <ion-row>
+            <ion-col size="11">
+              <h5>{{item.description}}</h5>
+            </ion-col>
+            <ion-col size="1">
+              <span (click)="setFavorite(i, item.id)" class="active">
+                <ion-icon [ngClass]="{'active': item.isFevorite, 'inactive': !item.isFevorite}"  name="heart"></ion-icon>
+              </span>
+            </ion-col>
+          </ion-row>
+        </ion-card-content>
+
+      </div>
+    </ion-card>
+  </div>
+ 
+  <div id="no-item-found"  *ngIf="feedArr?.length==0">
+    <p>No feed found. Check explore Item</p>
+    <a full size="small" expand="block" [routerLink]="['/tabs/favorite']">Go Explore</a>
+  </div>
+
+</ion-content>
+
