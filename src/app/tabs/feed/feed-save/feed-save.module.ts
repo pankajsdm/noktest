@@ -4,8 +4,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { FeedSavePageRoutingModule } from './feed-save-routing.module';
 import { LoaderComponentModule } from '../../../loader/loader.module';
-
 import { FeedSavePage } from './feed-save.page';
+
 @NgModule({
   
   imports: [

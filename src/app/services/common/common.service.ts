@@ -18,8 +18,8 @@ export class CommonService {
 
  
   public async createFeed(data) {
-    const headers = new HttpHeaders().set("Content-Type", "application/x-www-form-urlencoded")
-    return await this.http.post(`${this.apiUrl}/feed/create`, encodeParams(data), {headers}).toPromise();
+    //const headers = new HttpHeaders().set("Content-Type", "application/x-www-form-urlencoded")
+    return await this.http.post(`${this.apiUrl}/feed/create`, data, {}).toPromise();
   }
 
   public async updateFevourite(data) {

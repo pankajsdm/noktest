@@ -143,6 +143,7 @@ export class FeedPage implements OnInit, OnDestroy {
   }
 
   addFeed(){
+    console.log("add feed")
     this.router.navigate(['/tabs/feed/feed-save'])
   }
 
