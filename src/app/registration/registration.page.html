@@ -12,15 +12,7 @@
           <div class="input-container">
             
             <ion-item>
-              <ion-input type="text" formControlName="username" placeholder="Username"></ion-input>
-            </ion-item>
-
-            <ion-item>
-              <ion-input type="text" formControlName="first_name" placeholder="First name"></ion-input>
-            </ion-item>
-
-            <ion-item>
-              <ion-input type="text" formControlName="last_name" placeholder="Last name"></ion-input>
+              <ion-input type="text" formControlName="full_name" placeholder="Full name"></ion-input>
             </ion-item>
 
             <ion-item>
@@ -39,7 +31,7 @@
               <ion-input type="text" formControlName="artist_seller" placeholder="Artist or seller"></ion-input>
             </ion-item> -->
 
-            <ion-item>
+            <!-- <ion-item>
               <ion-label position="stacked">Choose Category<ion-text color="danger">*</ion-text></ion-label>
               <ion-select formControlName="artist_seller"  placeholder="Select option">
                 <ion-select-option value="artist">Artist</ion-select-option>
@@ -53,7 +45,7 @@
               <ion-select  formControlName="country"  placeholder="Select Country">
                 <ion-select-option [value]="item.name" *ngFor="let item of countries" >{{item.name}}</ion-select-option>
               </ion-select> 
-            </ion-item> 
+            </ion-item>  -->
 
 
             <div class="action">

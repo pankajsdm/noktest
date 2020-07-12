@@ -49,6 +49,7 @@ export class LoginPage implements OnInit {
     this.isLoading = true;
     console.log("this.loginFormGroup.value",this.loginFormGroup.value);
     this.auth.login(this.loginFormGroup.value).then(res => {   
+      alert("res"+JSON.stringify(res))
       this.isLoading = false;
       if(res['code']==200){
         this.menu.enable(true);
@@ -59,6 +60,7 @@ export class LoginPage implements OnInit {
       }
     })
     .catch(err => {
+      alert("err"+JSON.stringify(err))
       this.isLoading = false;
       return this.auth.presentToast(err, 3000, 'middle');
     });

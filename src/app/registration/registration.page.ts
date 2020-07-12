@@ -27,14 +27,10 @@ export class RegistrationPage implements OnInit {
     formBuilder: FormBuilder,
   ) {
     this.registrationFormGroup = formBuilder.group({
-      username: ["", [Validators.required]],
+      full_name: ["", [Validators.required]],
       email: ["",  [Validators.required, Validators.email]],
       password: ['', [Validators.required]],
-      confirm_password: ['', [Validators.required,  this.passwordMatcher.bind(this)]],
-      first_name: ['', [Validators.required]],
-      last_name: ['', [Validators.required]],
-      artist_seller: ['', [Validators.required]],
-      country: ['', [Validators.required]],
+      confirm_password: ['', [Validators.required,  this.passwordMatcher.bind(this)]]
     });
   }
 
@@ -72,6 +68,7 @@ export class RegistrationPage implements OnInit {
       }
       this.isLoading = true;
       this.registrationFormGroup.value['location'] = `${this.latitude.toFixed(4)},${this.longitude.toFixed(4)}`;
+      this.registrationFormGroup.value['signupType'] = `web`;
       this.auth.register(this.registrationFormGroup.value).then(res => {
         this.isLoading = false;
         if(res['code']==200){

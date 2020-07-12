@@ -45,7 +45,7 @@ export class ProfilePage {
   ionViewDidEnter() {
     this.countries =  Countries;
     this.userLogin = this.auth.getUser();
-    this.profile(this.userLogin.ID);
+    this.profile(this.userLogin.user_id);
   }
 
   doRefresh(event) {

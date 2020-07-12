@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'https://www.nokart.app/wp-json/v1',
-  //apiUrl: 'http://localhost/testing/wp-json/v1',
+  //apiUrl: 'https://www.nokart.app/wp-json/v1',
+  apiUrl: 'http://3.21.219.176/wp-json/v1',
   googleKey: "AIzaSyCchs3WzkIuZtfd3qiA8mSoeAy5_8S2BfI"
 };
 

@@ -3,7 +3,7 @@ import { Injectable } from "@angular/core";
 import { environment } from './../../environments/environment';
 import { AlertController, ToastController } from '@ionic/angular';
 import { encodeParams } from './utils';
-
+import { HTTP } from '@ionic-native/http/ngx';
 
 @Injectable({
   providedIn: 'root'
@@ -13,21 +13,34 @@ export class AuthService {
 
   constructor(
     private http: HttpClient,
+    private nativeHttp: HTTP,
     public alertCtrl: AlertController,
     private toastCtrl: ToastController
   ) { }
 
  
+  headerDict(){
+    return  {
+      "Access-Control-Allow-Origin" : "*",
+      "Access-Control-Allow-Methods" : "POST, GET, OPTIONS, PUT",
+      "Accept" : "application/json",
+      "Content-type" : "application/json",
+    } 
+  }
+
 
   public async login(data) {
-   
-    const headers = new HttpHeaders().set("Content-Type", "application/x-www-form-urlencoded")
-    return await this.http.post(`${this.apiUrl}/user/login`, data).toPromise();
-  } 
+    this.nativeHttp.setDataSerializer('json');
+    return await this.nativeHttp.post(`${this.apiUrl}/user/login`, data, this.headerDict()).then(res =>{
+      return JSON.parse(res.data)
+    });
+  }
 
   public async register(data) {
-    const headers = new HttpHeaders().set("Content-Type", "application/x-www-form-urlencoded")
-    return await this.http.post(`${this.apiUrl}/user/register`, encodeParams(data), {headers}).toPromise();
+    return await this.nativeHttp.post(`${this.apiUrl}/user/register`, data, this.headerDict()).then(res =>{
+      return JSON.parse(res.data)
+    });
+
   }
 
   public async getProfile(id) {
